@@ -3,7 +3,7 @@ import axios from "axios";
 
 const Data = () => {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingset, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios.get("http://localhost:4000/user").then((res) => {
@@ -12,7 +12,7 @@ const Data = () => {
     });
   }, []);
 
-  if (isLoading) {
+  if (isLoadingset) {
     return <h1>Loading...</h1>;
   }
 
@@ -20,7 +20,12 @@ const Data = () => {
     <div>
       <h1>DATA</h1>
       {data.map((items) => (
-        <h2 key={items.id}>{items.name}</h2>
+        <div key={items.id}>
+
+        <h2>{items.name}</h2>
+        <h2>{items.phone}</h2>
+        <h2>{items.website}</h2>
+        </div>
       ))}
     </div>
   );
